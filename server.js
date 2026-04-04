@@ -15,7 +15,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // API routes
+// API routes
 app.use("/api/users", usersRouter);
+
+const productRoutes = require("./routes/products");
+const orderRoutes = require("./routes/orders");
+
+app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
 
 // Test route
 app.get("/api/health", (req, res) => res.json({ status: "ok" }));
@@ -33,5 +40,6 @@ async function start() {
     process.exit(1);
   }
 }
+
 
 start();

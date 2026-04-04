@@ -11,6 +11,13 @@ async function loadUsers() {
   const res = await fetch("/api/users");
   const users = await res.json();
 
+  async function loadOrders() {
+  const res = await fetch("/api/orders");
+  const data = await res.json();
+
+  console.log(data); // verify populated data
+}
+
   userList.innerHTML = "";
   if (!users.length) {
     userList.innerHTML = `<div class="text-muted">No users yet.</div>`;
